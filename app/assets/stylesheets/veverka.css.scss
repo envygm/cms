@@ -1,0 +1,30 @@
+.error {
+	color: red;
+}
+
+.success {
+	color: green;
+}
+
+.news img {
+	width: 250px;
+
+}
+
+a {
+	color: darkred;
+	text-decoration: none;
+}
+
+a:hover {
+	color: darkblue;
+}
+
+table {
+		border-collapse: collapse;
+}
+
+table td, table th {
+	border: 1px black solid;
+	padding: 5px;
+}
