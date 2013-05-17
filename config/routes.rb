@@ -1,11 +1,17 @@
 Cms::Application.routes.draw do
 
-  get "dashboard/index"
+  devise_for :users
 
-  resources :pages
-  resources :menus
-  resources :news
+  namespace :admin do
 
+    get "dashboard/index"
+    get "dashboard/search"
+
+    resources :pages
+    resources :menus
+    resources :news
+
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -55,7 +61,7 @@ Cms::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'dashboard#index'
+  root :to => 'admin::dashboard#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,0 +1,77 @@
+
+<% if @results_page.empty? %>
+	<p>Pages: No results</p>
+<% else %>
+	<p>Pages: <%= pluralize(@results_page.count, 'result') %> found <%= link_to 'Useless Link All Pages', admin_pages_path %></p>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Menus</th>
+			<th>News</th>
+			<th>Content</th>
+			<th></th>
+		</tr>
+		<% @results_page.each do |page| %>
+			<tr>
+				<td><%= page.id %></td>
+				<td><%= link_to highlight(page.title, @search), admin_page_path(page) %></td>
+				<td><%=raw page.menus.map {|m| link_to m.name, admin_menu_path(m)}.join(', ') %></td>
+				<td><%=raw page.news.map {|n| link_to n.title, admin_news_path(n)}.join(', ') %></td>
+				<td><%= highlight(excerpt(page.content, @search, radius: 20), @search) %></td>
+				<td><%= link_to 'Edit', edit_admin_page_path(page) %></td>	
+			</tr>
+		<% end %>
+	</table>
+<% end %>
+
+<% if @results_menu.empty? %>
+	<p>Menus: No results</p>
+<% else %>
+	<p>Menus: <%= @results_menu.count %> results found <%= link_to 'Useless Link All Menus', admin_menus_path %></p>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Pages</th>
+			<th></th>
+			<th></th>
+
+		</tr>
+		<% @results_menu.each do |menu| %>
+			<tr>
+				<td><%= menu.id %></td>
+				<td><%= link_to highlight(menu.name, @search), new_admin_menu_path(menu) %></td>
+				<td><%=raw menu.pages.map {|p| link_to p.title, new_admin_page_path(p)}.join(', ') %></td>
+				<td><%= link_to 'Delete', new_admin_menu_path(menu), confirm: 'Menu will be deleted!',
+												method: :delete %></td>
+				<td><%= link_to 'Edit', edit_admin_menu_path(menu) %></td>	
+			</tr>
+		<% end %>
+	</table>
+<% end %>
+
+<% if @results_news.empty? %>
+	<p>News: No results</p>
+<% else %>
+	<p>News: <%= @results_news.count %> results found <%= link_to 'Useless Link All News', admin_news_index_path %></p>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Page</th>
+			<th></th>
+		</tr>
+		<% @results_news.each do |news| %>
+			<tr>
+				<td><%= news.id %></td>
+				<td><%= link_to highlight(news.title, @search), admin_news_path(news) %></td>
+				<td><%= link_to news.page.title, admin_page_path(news.page) %></td>
+				<td><%= highlight(excerpt(news.content, @search, radius: 20), @search) %></td>
+				<td><%= link_to 'Edit', edit_admin_news_path(news) %></td>		
+			</tr>
+		<% end %>
+	</table>
+<% end %>

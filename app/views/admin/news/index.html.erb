@@ -1,0 +1,25 @@
+<h1>News</h1>
+<%= link_to 'Create News', new_admin_news_path, class: 'small button' %>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Page</th>
+		<th></th>
+		<th></th>
+		<th>Created</th>
+		<th>Updated</th>
+	</tr>
+	<% @news.each do |news| %>
+		<tr>
+			<td><%= news.id %></td>
+			<td><%= link_to news.title, admin_news_path(news) %></td>
+			<td><%= link_to news.page.title, admin_page_path(news.page) %></td>
+			<td><%= link_to 'Delete', admin_news_path(news), confirm: 'News will be deleted!',
+											method: :delete %></td>
+			<td><%= link_to 'Edit', edit_admin_news_path(news) %></td>	
+			<td><%= news.created_at.strftime '%d. %m. %Y at %T UTC' %></td>
+			<td><%= news.updated_at.strftime '%d. %m. %Y at %T UTC' %></td>		
+		</tr>
+	<% end %>
+</table>

@@ -1,0 +1,10 @@
+<div class="news">
+	<h1><%= @news.title %></h1>
+	<p><%= @news.content %></p>
+	<p>Page: <%= link_to @news.page.title, admin_page_path(@news.page) %></p>
+	<% if @news.image !='' %>
+		<img src="<%= @news.image %>" alt="<%= @news.title %>" />
+	<% end %>
+<p>News created: <%= @news.created_at.strftime '%d. %m. %Y at %T UTC' %> | Last updated: 
+	<%= @news.updated_at.strftime '%d. %m. %Y at %T UTC' %></p>
+</div>

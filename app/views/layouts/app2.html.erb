@@ -49,7 +49,7 @@
     </nav>
 
     <div class="row">
-      <div class="large-12 columns">
+      <div class="small-6 small-centered large-centered columns">
         <% if flash.count > 0 %>
           <% flash.each do |key, value| %>
             <div data-alert class="alert-box">
@@ -59,28 +59,10 @@
           <% end %>
           
         <% end %>
-        
 
-          <%= form_tag(admin_dashboard_search_path, :method => 'get') do %>
-            <div class="row collapse">
-
-              <div class="large-3 right">
-                <div class="large-8 small-9 columns">
-                  <input type="text" name="search" />
-                </div>
-
-                <div class="large-4 small-3 columns">
-                  <input type="submit" class="postfix button expand" value="Search" />
-                </div>
-              </div>
-
-            </div>
-          <% end %>
-
-
-        <%= yield %>
       </div>
     </div>
+    <%= yield %>
 
     
     <%= javascript_include_tag "application" %>

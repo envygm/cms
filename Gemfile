@@ -17,6 +17,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'zurb-foundation', '~> 4.0.0'
 end
 
 gem 'jquery-rails'
@@ -44,6 +45,10 @@ end
 
 gem 'simple_form'
 
-group :production do
-  gem 'pg', '0.12.2'
-end
+gem 'sqlite3'
+
+gem 'devise'
+
+gem 'default_value_for'
+
+gem 'acts_as_indexed'

@@ -1,0 +1,18 @@
+<%= simple_form_for(["admin", @page]) do |f| %>
+	<% if @page.errors.any? %>
+		<p>The form contains <%= pluralize(@page.errors.count, "error") %>:</p>
+	    <ul>
+	    	<% @page.errors.full_messages.each do |msg| %>
+	    		<li class="error"><%= msg %></li>
+	    	<% end %>
+	    </ul>
+	<% end %>
+	<%= f.label :title %>
+	<%= f.text_field :title %> <br>
+	<%= f.label :content %>
+	<%= f.text_area :content %> <br>
+	<%= f.association :menus, as: :check_boxes %>
+	<%= link_to 'New Menu', new_admin_menu_path, class: 'small button' %>
+	<%= f.submit class: 'small button' %>
+
+<% end %>

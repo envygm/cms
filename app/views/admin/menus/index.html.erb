@@ -1,0 +1,28 @@
+<h1>Menus</h1>
+<%= link_to 'Create Menu', new_admin_menu_path, class: 'small button' %>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Pages</th>
+		<th></th>
+		<th></th>
+		
+		<th>Created</th>
+		<th>Updated</th>
+
+	</tr>
+	<% @menus.each do |menu| %>
+		<tr>
+			<td><%= menu.id %></td>
+			<td><%= link_to menu.name, new_admin_menu_path(menu) %></td>
+			<td><%=raw menu.pages.map {|p| link_to p.title, new_admin_page_path(p)}.join(', ') %></td>
+			<td><%= link_to 'Delete', new_admin_menu_path(menu), confirm: 'Menu will be deleted!',
+											method: :delete %></td>
+			<td><%= link_to 'Edit', edit_admin_menu_path(menu) %></td>
+
+			<td><%= menu.created_at.strftime '%d. %m. %Y at %T UTC' %></td>
+			<td><%= menu.updated_at.strftime '%d. %m. %Y at %T UTC' %></td>		
+		</tr>
+	<% end %>
+</table>

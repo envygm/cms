@@ -1,0 +1,27 @@
+<h1>Pages</h1>
+<%= link_to 'Create Page', new_admin_page_path, class: 'small button'%>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Menus</th>
+		<th>News</th>
+		<th></th>
+		<th></th>
+		<th>Created</th>
+		<th>Updated</th>
+	</tr>
+	<% @pages.each do |page| %>
+		<tr>
+			<td><%= page.id %></td>
+			<td><%= link_to page.title, admin_page_path(page) %></td>
+			<td><%=raw page.menus.map {|m| link_to m.name, admin_menu_path(m)}.join(', ') %></td>
+			<td><%=raw page.news.map {|n| link_to n.title, admin_news_path(n)}.join(', ') %></td>
+			<td><%= link_to 'Delete', admin_page_path(page), confirm: 'Page will be deleted!',
+											method: :delete %></td>
+			<td><%= link_to 'Edit', edit_admin_page_path(page) %></td>	
+			<td><%= page.created_at.strftime '%d. %m. %Y at %T UTC' %></td>
+			<td><%= page.updated_at.strftime '%d. %m. %Y at %T UTC' %></td>		
+		</tr>
+	<% end %>
+</table>
