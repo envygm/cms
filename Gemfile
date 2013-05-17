@@ -46,7 +46,7 @@ end
 gem 'simple_form'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '0.12.2'
 end
 
 gem 'devise'
