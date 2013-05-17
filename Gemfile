@@ -45,7 +45,9 @@ end
 
 gem 'simple_form'
 
-gem 'sqlite3'
+group :production do
+  gem 'pg'
+end
 
 gem 'devise'
 
