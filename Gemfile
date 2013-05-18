@@ -36,6 +36,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
 group :development do
 	gem "better_errors"
 	gem "binding_of_caller"
@@ -45,10 +46,10 @@ end
 
 gem 'simple_form'
 
-group :production do
-  gem 'pg', '0.12.2'
-end
-
+#group :production do
+#  gem 'pg'
+#end
+gem 'pg'
 gem 'devise'
 
 gem 'default_value_for'

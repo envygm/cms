@@ -141,7 +141,7 @@ DEPENDENCIES
   devise
   jquery-rails
   meta_request
-  pg (= 0.12.2)
+  pg
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   simple_form
