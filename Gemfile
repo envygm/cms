@@ -46,10 +46,10 @@ end
 
 gem 'simple_form'
 
-#group :production do
-#  gem 'pg'
-#end
-gem 'pg'
+group :production do
+  gem 'pg'
+end
+
 gem 'devise'
 
 gem 'default_value_for'
