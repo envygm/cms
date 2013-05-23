@@ -147,4 +147,4 @@ DEPENDENCIES
   simple_form
   sqlite3
   uglifier (>= 1.0.3)
-  zurb-foundation (~> 4.0.0)
+  zurb-foundation
